@@ -25,6 +25,12 @@ export default (state = init_state, action) => {
 
       return {...state}
 
+    case 'plusminus':
+      value = state[`screen${action.payload.screen}`].value
+      state[`screen${action.payload.screen}`].value = value.charAt(0) == '-' ? value.substring(1, value.length) : `-${value}`
+
+      return {...state}
+
     default:
 
       if (typeof action.type == 'number') {

@@ -6,18 +6,24 @@ import { connect } from 'react-redux';
 
 class Screen extends React.Component {
 
+  v1 = 0
+  v2 = 0
+
   calculate = () => {
-    let v1 = this.props.app.sub_screens.screen0.value
-    let v2 = this.props.app.sub_screens.screen1.value
+    this.v1 = Number(this.props.app.sub_screens.screen0.value)
+    this.v2 = Number(this.props.app.sub_screens.screen1.value)
 
-    if (v1.length == 0 || v2.length == 0) return 0;
+    if (this.v1.toString().length == 0 || this.v2.toString().length == 0) {
+      return 0
+    }
 
-    return ((Number(v2) - Number(v1)) / Number(v1)) * 100
+    return ((this.v2 - this.v1) / this.v1) * 100
   }
 
 
   render = () => {
     let change = this.calculate()
+    change = this.v1 < this.v2 ? Math.abs(change) : -Math.abs(change)
     if (change % 1 != 0) change = change.toFixed(2)
     if (isNaN(change) || !isFinite(change)) change = 0
     let change_text = `${change}%`
