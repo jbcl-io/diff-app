@@ -1,8 +1,9 @@
 import React from 'react'
-import { View, StyleSheet, SafeAreaView } from 'react-native'
+import { View, StyleSheet, SafeAreaView, Clipboard } from 'react-native'
 import SubScreen from './SubScreen'
 import { connect } from 'react-redux'
 import func from '../func'
+import Toast from 'react-native-root-toast'
 
 
 class Screen extends React.Component {
@@ -63,6 +64,15 @@ class Screen extends React.Component {
             value={change_text}
             color={change < 0 ? '#F58283' : '#00D6C2'}
             label='Change'
+            onPress={() => {
+              Clipboard.setString(change_text)
+
+              Toast.show('Copied!', {
+                position: 40,
+                duration: 1000,
+                shadow: false
+              })
+            }}
           />
         </SafeAreaView>
       </View>
