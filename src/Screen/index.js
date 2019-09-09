@@ -1,7 +1,8 @@
 import React from 'react'
 import { View, StyleSheet, SafeAreaView } from 'react-native'
-import SubScreen from './SubScreen';
-import { connect } from 'react-redux';
+import SubScreen from './SubScreen'
+import { connect } from 'react-redux'
+import func from '../func'
 
 
 class Screen extends React.Component {
@@ -20,13 +21,12 @@ class Screen extends React.Component {
     return ((this.v2 - this.v1) / this.v1) * 100
   }
 
-
   render = () => {
     let change = this.calculate()
     change = this.v1 < this.v2 ? Math.abs(change) : -Math.abs(change)
     if (change % 1 != 0) change = change.toFixed(2)
     if (isNaN(change) || !isFinite(change)) change = 0
-    let change_text = `${change}%`
+    let change_text = func.comma(change) + '%'
     if (change > -1) change_text = '+' + change_text
 
     return (
@@ -34,7 +34,7 @@ class Screen extends React.Component {
         <SafeAreaView style={s.cntr} >
           <SubScreen
             style={s.subScreen}
-            value={this.props.app.sub_screens.screen0.value}
+            value={func.comma(this.props.app.sub_screens.screen0.value)}
             color='#312E43'
             label='From'
             isActive={this.props.app.screens.activeScreen === 0}
@@ -47,7 +47,7 @@ class Screen extends React.Component {
           />
           <SubScreen
             style={s.subScreen}
-            value={this.props.app.sub_screens.screen1.value}
+            value={func.comma(this.props.app.sub_screens.screen1.value)}
             color='#312E43'
             label='To'
             isActive={this.props.app.screens.activeScreen === 1}
