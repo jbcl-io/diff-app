@@ -1,11 +1,11 @@
 export default {
 
   screen0: {
-    value: '1'
+    value: ''
   },
 
   screen1: {
-    value: '3'
+    value: ''
   }
 
 }
