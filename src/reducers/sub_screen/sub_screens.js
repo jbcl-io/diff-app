@@ -19,6 +19,12 @@ export default (state = init_state, action) => {
 
       return {...state}
 
+    case 'clear':
+      state[`screen0`].value = ''
+      state[`screen1`].value = ''
+
+      return {...state}
+
     default:
 
       if (typeof action.type == 'number') {
