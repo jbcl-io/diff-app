@@ -62,7 +62,7 @@ const s = StyleSheet.create({
   valueText: {
     textAlign: 'right',
     flex: 1,
-    fontSize: 64,
+    fontSize: 56,
     fontWeight: '500',
     color: '#0E171E'
   },
