@@ -29,13 +29,7 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 		<key>NSExceptionDomains</key>
-		<dict>
-			<key>localhost</key>
-			<dict>
-				<key>NSExceptionAllowsInsecureHTTPLoads</key>
-				<true/>
-			</dict>
-		</dict>
+		<false/>
 	</dict>
 	<key>NSCalendarsUsageDescription</key>
 	<string>Allow Diff to access your calendar</string>
@@ -52,7 +46,7 @@
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Allow Diff to access your microphone</string>
 	<key>NSMotionUsageDescription</key>
-	<string>Allow Diff to access your device's accelerometer</string>
+	<string>Allow Diff to access your device&apos;s accelerometer</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Give Diff periences permission to save photos</string>
 	<key>NSPhotoLibraryUsageDescription</key>
