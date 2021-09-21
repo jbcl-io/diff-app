@@ -1,5 +1,5 @@
 export const hasDot = (value: string): boolean => {
-  return value.includes(".");
+  return value.includes('.');
 };
 
 export const addDot = (value: string): string => {
@@ -7,10 +7,10 @@ export const addDot = (value: string): string => {
 };
 
 export const removeDot = (value: string): string => {
-  return hasDot(value) ? value.replaceAll(".", "") : value;
+  return hasDot(value) ? value.replaceAll('.', '') : value;
 };
 
 export const addRemoveDot = (value: string): string => {
   const v = value.toString();
-  return hasDot(v) ? v.replaceAll(".", "") : `${v}.`;
+  return hasDot(v) ? v.replaceAll('.', '') : `${v}.`;
 };

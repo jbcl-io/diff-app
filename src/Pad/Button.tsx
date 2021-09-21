@@ -1,6 +1,6 @@
-import { StyleSheet, Text, TouchableHighlight } from "react-native";
+import { StyleSheet, Text, TouchableHighlight } from 'react-native';
 
-import React from "react";
+import React from 'react';
 
 export const enum ButtonType {
   Primary = 0,
@@ -19,7 +19,7 @@ const Button = (props: Props) => {
     <TouchableHighlight
       style={styles.container}
       onPress={() => props.onPress(props.value)}
-      underlayColor={props.type === ButtonType.Primary ? "#413C56" : "#ae9ff5"}
+      underlayColor={props.type === ButtonType.Primary ? '#413C56' : '#ae9ff5'}
     >
       <Text style={styles.text}>{props.text}</Text>
     </TouchableHighlight>
@@ -29,13 +29,13 @@ const Button = (props: Props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   text: {
     fontSize: 26,
-    fontWeight: "300",
-    color: "#ffffff",
+    fontWeight: '300',
+    color: '#ffffff',
   },
 });
 

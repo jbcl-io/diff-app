@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>Diff</string>
+	<string>diffapp</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -26,33 +26,17 @@
 	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
 		<key>NSExceptionDomains</key>
-		<false/>
+		<dict>
+			<key>localhost</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
+		</dict>
 	</dict>
-	<key>NSCalendarsUsageDescription</key>
-	<string>Allow Diff to access your calendar</string>
-	<key>NSCameraUsageDescription</key>
-	<string>Allow Diff to use the camera</string>
-	<key>NSContactsUsageDescription</key>
-	<string>Allow Diff experiences to access your contacts</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Allow Diff to use your location</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Allow Diff to use your location</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Allow Diff to use your location</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Allow Diff to access your microphone</string>
-	<key>NSMotionUsageDescription</key>
-	<string>Allow Diff to access your device's accelerometer</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Give Diff periences permission to save photos</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Give Diff periences permission to access your photos</string>
-	<key>NSRemindersUsageDescription</key>
-	<string>Allow Diff to access your reminders</string>
+	<string></string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -62,6 +46,8 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>

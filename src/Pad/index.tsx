@@ -1,10 +1,9 @@
-import Button, { ButtonType } from "./Button";
-import { SafeAreaView, StyleSheet, View } from "react-native";
-import { Screens, state } from "../states/appState";
-import { set, use } from "use-minimal-state";
+import Button, { ButtonType } from './Button';
+import { SafeAreaView, StyleSheet, View } from 'react-native';
+import { Screens, state } from '../states/appState';
+import { set, use } from 'use-minimal-state';
 
-import React from "react";
-import { hasDot } from "../lib/valueDot";
+import React from 'react';
 
 interface ButtonProps {
   text: string;
@@ -13,40 +12,39 @@ interface ButtonProps {
 
 const primaryButtons: ButtonProps[][] = [
   [
-    { text: "7", id: 7 },
-    { text: "8", id: 8 },
-    { text: "9", id: 9 },
+    { text: '7', id: 7 },
+    { text: '8', id: 8 },
+    { text: '9', id: 9 },
   ],
   [
-    { text: "4", id: 4 },
-    { text: "5", id: 5 },
-    { text: "6", id: 6 },
+    { text: '4', id: 4 },
+    { text: '5', id: 5 },
+    { text: '6', id: 6 },
   ],
   [
-    { text: "1", id: 1 },
-    { text: "2", id: 2 },
-    { text: "3", id: 3 },
+    { text: '1', id: 1 },
+    { text: '2', id: 2 },
+    { text: '3', id: 3 },
   ],
   [
-    { text: "0", id: 0 },
-    { text: ".", id: "dot" },
-    { text: "←", id: "backspace" },
+    { text: '0', id: 0 },
+    { text: '.', id: 'dot' },
+    { text: '←', id: 'backspace' },
   ],
 ];
 
 const secondaryButtons: ButtonProps[][] = [
   [
-    { text: "C", id: "clear" },
-    { text: "+/-", id: "plusMinus" },
-    { text: "↑", id: "prev" },
-    { text: "↓", id: "next" },
+    { text: 'C', id: 'clear' },
+    { text: '+/-', id: 'plusMinus' },
+    { text: '↑', id: 'prev' },
+    { text: '↓', id: 'next' },
   ],
 ];
 
 const Pad = () => {
-  const activeScreen = use(state, "activeScreen");
-  const screenValues = use(state, "screenValues");
-  const resultValue = use(state, "resultValue");
+  const activeScreen = use(state, 'activeScreen');
+  const screenValues = use(state, 'screenValues');
 
   const getFocusedValue = (): string => {
     return activeScreen === Screens.Top ? screenValues[0] : screenValues[1];
@@ -56,11 +54,11 @@ const Pad = () => {
     const oldValue = getFocusedValue();
 
     switch (buttonId) {
-      case "dot": {
-        if (!oldValue.includes(".")) {
+      case 'dot': {
+        if (!oldValue.includes('.')) {
           const newValue = `${oldValue}.`;
 
-          set(state, "screenValues", [
+          set(state, 'screenValues', [
             activeScreen === Screens.Top ? newValue : screenValues[0],
             activeScreen === Screens.Bottom ? newValue : screenValues[1],
           ]);
@@ -68,53 +66,50 @@ const Pad = () => {
         break;
       }
 
-      case "backspace": {
-        const newValue =
-          oldValue.length === 1 ? "" : oldValue.substr(0, oldValue.length - 1);
+      case 'backspace': {
+        const newValue = oldValue.length === 1 ? '' : oldValue.substr(0, oldValue.length - 1);
 
-        set(state, "screenValues", [
+        set(state, 'screenValues', [
           activeScreen === Screens.Top ? newValue : screenValues[0],
           activeScreen === Screens.Bottom ? newValue : screenValues[1],
         ]);
         break;
       }
 
-      case "clear": {
-        set(state, "screenValues", ["", ""]);
-        set(state, "activeScreen", Screens.Top);
+      case 'clear': {
+        set(state, 'screenValues', ['', '']);
+        set(state, 'activeScreen', Screens.Top);
         break;
       }
 
-      case "plusMinus": {
-        const newValue = oldValue.includes("-")
-          ? oldValue.replace("-", "")
-          : `-${oldValue}`;
+      case 'plusMinus': {
+        const newValue = oldValue.includes('-') ? oldValue.replace('-', '') : `-${oldValue}`;
 
-        set(state, "screenValues", [
+        set(state, 'screenValues', [
           activeScreen === Screens.Top ? newValue : screenValues[0],
           activeScreen === Screens.Bottom ? newValue : screenValues[1],
         ]);
         break;
       }
 
-      case "prev": {
-        set(state, "activeScreen", Screens.Top);
+      case 'prev': {
+        set(state, 'activeScreen', Screens.Top);
         break;
       }
 
-      case "next": {
-        set(state, "activeScreen", Screens.Bottom);
+      case 'next': {
+        set(state, 'activeScreen', Screens.Bottom);
         break;
       }
 
       default: {
-        if (typeof buttonId !== "number") {
+        if (typeof buttonId !== 'number') {
           throw Error(`buttonId ${buttonId} is not a number`);
         }
 
         const newValue = `${oldValue}${buttonId}`;
 
-        set(state, "screenValues", [
+        set(state, 'screenValues', [
           activeScreen === Screens.Top ? newValue : screenValues[0],
           activeScreen === Screens.Bottom ? newValue : screenValues[1],
         ]);
@@ -162,16 +157,16 @@ const Pad = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "row",
+    flexDirection: 'row',
     flex: 1,
   },
   group1: {
     flex: 4,
-    backgroundColor: "#312E43",
+    backgroundColor: '#312E43',
   },
   group2: {
     flex: 1,
-    backgroundColor: "#9C89F8",
+    backgroundColor: '#9C89F8',
   },
   group1Buttons: {
     flex: 1,
@@ -180,15 +175,15 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   btnRow: {
-    flexDirection: "row",
+    flexDirection: 'row',
     flex: 1,
   },
   btnColumn: {
-    flexDirection: "row",
+    flexDirection: 'row',
     flex: 1,
   },
   c_btn: {
-    backgroundColor: "#7064AC",
+    backgroundColor: '#7064AC',
   },
 });
 

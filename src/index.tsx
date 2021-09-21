@@ -1,8 +1,8 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View } from 'react-native';
 
-import Pad from "./Pad";
-import React from "react";
-import Screen from "./Screen";
+import Pad from './Pad';
+import React from 'react';
+import Screen from './Screen';
 
 const Calculator = () => {
   return (

@@ -13,6 +13,6 @@ interface State {
 
 export const state: State = {
   activeScreen: Screens.Top,
-  screenValues: ["", ""],
-  resultValue: "",
+  screenValues: ['', ''],
+  resultValue: '',
 };
