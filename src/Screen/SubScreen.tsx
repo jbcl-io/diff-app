@@ -1,5 +1,6 @@
 import { StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native';
 
+import AutoAdjustLabel from './AutoAdjustLabel';
 import React from 'react';
 
 interface Props {
@@ -22,14 +23,15 @@ const SubScreen = (props: Props) => {
           </View>
 
           <View style={styles.valueContainer}>
-            <Text
+            <AutoAdjustLabel
+              fontSize={56}
+              text={props.value}
               style={StyleSheet.flatten([
                 styles.valueText,
                 props.color ? { color: props.color } : null,
               ])}
-            >
-              {props.value}
-            </Text>
+              numberOfLines={1}
+            />
           </View>
         </View>
       </TouchableWithoutFeedback>
