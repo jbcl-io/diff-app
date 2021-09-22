@@ -1,7 +1,7 @@
 import Button, { ButtonType } from './Button';
 import { SafeAreaView, StyleSheet, View } from 'react-native';
 import { Screens, state } from '../states/appState';
-import { set, use } from 'use-minimal-state';
+import { set, use } from 'use-minimal-state/dist/index';
 
 import React from 'react';
 
