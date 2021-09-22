@@ -1,5 +1,5 @@
 import Button, { ButtonType } from './Button';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SafeAreaView, StyleSheet, View } from 'react-native';
 import { Screens, state } from '../states/appState';
 import { set, use } from 'use-minimal-state/dist/index';
@@ -46,6 +46,10 @@ const Pad = () => {
   const screenValues = use(state, 'screenValues');
 
   const [toggleText, setToggleText] = useState('↓');
+
+  useEffect(() => {
+    setToggleText(activeScreen === Screens.Top ? '↓' : '↑');
+  }, [activeScreen]);
 
   const getFocusedValue = (): string => {
     return activeScreen === Screens.Top ? screenValues[0] : screenValues[1];
@@ -94,14 +98,7 @@ const Pad = () => {
       }
 
       case 'toggle': {
-        if (state.activeScreen === Screens.Top) {
-          set(state, 'activeScreen', Screens.Bottom);
-          setToggleText('↑');
-        } else {
-          set(state, 'activeScreen', Screens.Top);
-          setToggleText('↓');
-        }
-
+        set(state, 'activeScreen', activeScreen === Screens.Top ? Screens.Bottom : Screens.Top);
         break;
       }
 
