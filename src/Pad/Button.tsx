@@ -11,13 +11,14 @@ export interface Props {
   type: ButtonType;
   text: string;
   value: string | number;
+  flex?: number;
   onPress: (value: string | number) => void;
 }
 
 const Button = (props: Props) => {
   return (
     <TouchableHighlight
-      style={styles.container}
+      style={[styles.container, props.flex ? { flex: props.flex } : null]}
       onPress={() => props.onPress(props.value)}
       underlayColor={props.type === ButtonType.Primary ? '#413C56' : '#ae9ff5'}
     >

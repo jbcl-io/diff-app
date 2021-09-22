@@ -1,13 +1,13 @@
 import Button, { ButtonType } from './Button';
+import React, { useState } from 'react';
 import { SafeAreaView, StyleSheet, View } from 'react-native';
 import { Screens, state } from '../states/appState';
 import { set, use } from 'use-minimal-state/dist/index';
 
-import React from 'react';
-
 interface ButtonProps {
-  text: string;
   id: string | number;
+  text: string;
+  flex?: number;
 }
 
 const primaryButtons: ButtonProps[][] = [
@@ -37,14 +37,15 @@ const secondaryButtons: ButtonProps[][] = [
   [
     { text: 'C', id: 'clear' },
     { text: '+/-', id: 'plusMinus' },
-    { text: '↑', id: 'prev' },
-    { text: '↓', id: 'next' },
+    { text: '↓', id: 'toggle', flex: 2 },
   ],
 ];
 
 const Pad = () => {
   const activeScreen = use(state, 'activeScreen');
   const screenValues = use(state, 'screenValues');
+
+  const [toggleText, setToggleText] = useState('↓');
 
   const getFocusedValue = (): string => {
     return activeScreen === Screens.Top ? screenValues[0] : screenValues[1];
@@ -92,13 +93,15 @@ const Pad = () => {
         break;
       }
 
-      case 'prev': {
-        set(state, 'activeScreen', Screens.Top);
-        break;
-      }
+      case 'toggle': {
+        if (state.activeScreen === Screens.Top) {
+          set(state, 'activeScreen', Screens.Bottom);
+          setToggleText('↑');
+        } else {
+          set(state, 'activeScreen', Screens.Top);
+          setToggleText('↓');
+        }
 
-      case 'next': {
-        set(state, 'activeScreen', Screens.Bottom);
         break;
       }
 
@@ -142,8 +145,9 @@ const Pad = () => {
                 <Button
                   key={button.id}
                   type={ButtonType.Secondary}
-                  text={button.text}
+                  text={button.id === 'toggle' ? toggleText : button.text}
                   value={button.id}
+                  flex={button.flex}
                   onPress={onPress}
                 />
               ))}
